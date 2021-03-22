@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-//获取
+//获取11
 const app = getApp()
 
 Page({
