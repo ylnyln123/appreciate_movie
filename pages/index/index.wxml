@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view>
+  <import src="../../templates/foot.wxml" />
+  <template is="myFoot" />
+  <view class='banner'>
+    <movable-area>
+      <movable-view direction="horizontal">
+          <view  class='store' wx:for='{{books}}' wx:key='src' bindtap="bindViewTap">
+            <image src='{{item.src}}' mode='aspextFill'></image>
+             <p>{{item.dis}}</p>
+          </view>
+      </movable-view>
+    </movable-area>
+  </view>
+</view>

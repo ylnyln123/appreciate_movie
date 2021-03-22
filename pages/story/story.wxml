@@ -1,0 +1,7 @@
+<view>
+  <view class="story" wx:for="{{story}}" bindtap="bindViewTap">
+    <p class="title">{{item.title}}</p>
+    <image src="{{item.src}}"></image>
+    <p class="dis">{{item.dis}}</p>
+  </view>
+</view> 

@@ -1,0 +1,11 @@
+<view>
+  <import src="../../templates/foot.wxml" />
+  <template is="myFoot" />
+
+  <view class='per-list bg-white'  wx:for="{{bookbox}}"> 
+    <navigator class='list' url="../community/community">
+      <text class='jiantou'>{{item.name}}</text>
+    </navigator>
+    <view class='bar'></view>
+</view>
+</view>

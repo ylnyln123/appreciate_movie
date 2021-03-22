@@ -1,0 +1,115 @@
+@import "../index/index.wxss";
+.nine{
+  width: 90%;
+  height:800rpx;
+  padding-top: 140rpx;
+  margin-left: 5%;
+}
+.nine view{
+  position:relative;
+  float:left;
+  padding:30rpx 30rpx;
+  width:33.33333%;
+  box-sizing:border-box;
+  border:1rpx solid #D9D9D9;
+}
+.nine image{
+  width: 100%;
+  height: 100px;
+}
+.nine p{
+  font-size: 22rpx;
+  color:gray;
+  white-space:nowrap;
+  text-align:center;
+  /* padding-left:25%; */
+}
+page{
+  background-color: #f1f1f1;
+}
+.header{
+  width: 100%;
+  height: 350rpx;
+  /* background-color: rgb(237, 236, 232); */
+}
+.header .photo{
+  display: flex;
+  flex-direction: column;
+  font-size:26rpx;
+  color: grey;
+}
+.header .photo .image{
+width: 200rpx;
+height: 200rpx;
+border: 2px rgb(212, 206, 206) solid;
+border-radius:50%;
+overflow: hidden;
+}
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 个人列表样式 */
+.list{
+   width:100%;
+   height: 150rpx;
+   font-size: 38rpx;
+    display: flex;
+   align-items: center;  
+   padding-left: 50rpx;
+   box-shadow: 0 3rpx 0 #f1f1f1;
+}
+/* .list{margin-top: 20rpx;} */
+.bar{
+  width: 100%;
+  height: 20rpx;
+  background-color: #f1f1f1;
+}
+.bg-white{
+  background-color: #fff;
+}
+.space-between{
+  width:85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* 箭头样式 */
+.jiantou{
+  width:85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jiantou::after{
+  content: "";
+  width: 28rpx;
+  height: 28rpx;
+  border-top: 1rpx rgb(212, 206, 206) solid;
+  border-right:1rpx rgb(212, 206, 206) solid; 
+  -webkit-animation: 2s move infinite linear normal;
+  animation: 2s move infinite linear normal;
+  animation-delay: -3s;
+  
+}
+
+@keyframes move {
+  /*从6s整体时间的50%开始播放动画，即前3s为两次动画时间间隔*/
+  0% {
+    transform: translate(-90px, 0) rotate(45deg);
+  }
+  100% {
+    transform: translate(0px, 0) rotate(45deg);
+  }
+}

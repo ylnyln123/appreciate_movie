@@ -1,0 +1,10 @@
+<!--foot.wxml-->
+<template name="myFoot">
+  <view class="find">
+    <view class="sea">
+      <icon size="15" type='search' color='gray'></icon>
+      <input placeholder='流浪地球' />
+      <p>|电影</p>
+    </view>
+  </view>
+</template>

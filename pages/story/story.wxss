@@ -1,0 +1,29 @@
+view .p{
+  color:gray;
+  margin-left:270rpx;
+  margin-top:30rpx;
+}
+.story{
+  width: 90%;
+  height:250rpx;
+  margin-left:5%;
+  padding-top:50rpx;
+  border-bottom: 1rpx solid gray;
+}
+.title{
+  font-size:30rpx;
+}
+.dis{
+  position: relative;
+  font-size:25rpx;
+  color:gray;
+  float: left;
+  top:120rpx;
+}
+image{
+  width: 120rpx;
+  height:120rpx;
+  float:right;
+  margin-right:50rpx;
+  margin-top: 25rpx;
+}

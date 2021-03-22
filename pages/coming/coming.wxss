@@ -1,0 +1,28 @@
+/* pages/coming/coming.wxss */
+.film-item{
+  width: 100%;
+  display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+.film-image{
+  width: 28%;
+  padding:0 10rpx;
+  /* display: flex; */
+  /* flex-direction: row;
+  justify-content: flex-start; */
+ 
+}
+.film-image .name{
+  font-size: 28rpx;
+}
+.film-image .text{
+  font-size: 24rpx;
+  color:#e09015;
+  margin-left:6rpx
+}
+.film-image image{
+  margin: 10rpx;
+  width: 100%;
+  height: 180px;
+}

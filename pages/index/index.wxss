@@ -1,0 +1,68 @@
+/**index.wxss**/
+
+.find {
+  width: 100%;
+}
+
+.find .sea {
+  width: 80%;
+  height: 70rpx;
+  background-color: white;
+  border: 1rpx solid gray;
+  border-radius: 50rpx;
+  display: flex;
+  float: left;
+  margin-left: 11%;
+  margin-top: 30rpx;
+}
+
+.find .sea input {
+  width: 75%;
+  height: 70rpx;
+  margin-left: 2%;
+  font-size: 25rpx;
+  line-height: 70rpx;
+}
+
+.find .sea icon {
+  padding-left: 15rpx;
+  padding-top: 20rpx;
+}
+
+.find .sea p {
+  color: gray;
+  font-size: 25rpx;
+  line-height: 70rpx;
+}
+.banner {
+  position: relative;
+  top: 140rpx;
+  width: 80%;
+  margin-left:9%;
+  height: 80vh;
+}
+
+.banner movable-area {
+  width: 100%;
+  height: 80vh;
+}
+.banner movable-area movable-view {
+  width: 400%;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.banner movable-area movable-view view {
+  padding-left: 25rpx;
+  width: 30%;
+}
+
+.store image{
+  width:100%;
+  height:80vh;
+}
+.store p{
+  font-size: 30rpx;
+  color:gray;
+}

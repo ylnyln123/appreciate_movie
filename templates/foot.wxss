@@ -1,0 +1,4 @@
+/**foot.wxss**/
+.sea{
+  margin-bottom: 20rpx;
+}
