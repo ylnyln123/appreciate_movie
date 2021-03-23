@@ -4,6 +4,7 @@
     "pages/logs/logs",
     "pages/post/post",
     "pages/my/my",
+    "pages/blog/blog",
     "pages/detail/detail",
     "pages/community/community",
     "pages/coming/coming",
@@ -12,33 +13,46 @@
     "pages/person/person"
   ],
   "window": {
+    "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "中外电影",
+    "navigationBarBackgroundColor": "#D43C33",
+    "navigationBarTitleText": "中外电影文化",
     "navigationBarTextStyle": "black"
   },
+  "useExtendedLib": {
+    "weui": true
+  },
   "tabBar": {
-    "selectedColor": "#1296db",
+    "color": "#474747",
+    "selectedColor": "#d43c43",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "images/icons/bookdesk.png",
-        "selectedIconPath": "images/icons/bookdesk_sel.png",
+        "iconPath": "images/moviess.png",
+        "selectedIconPath": "images/movie.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/post/post",
-        "iconPath": "images/icons/stack.png",
-        "selectedIconPath": "images/icons/stack_sel.png",
+        "iconPath": "images/details.png",
+        "selectedIconPath": "images/detai.png",
         "text": "分类"
       },
       {
+        "pagePath": "pages/blog/blog",
+        "text": "发现",
+        "iconPath": "images/issue.png",
+        "selectedIconPath": "images/issuing.png"
+      },
+      {
         "pagePath": "pages/my/my",
-        "iconPath": "images/icons/mine.png",
-        "selectedIconPath": "images/icons/mine_sel.png",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/mememe.png",
         "text": "我的"
       }
     ]
   },
   "sitemapLocation": "sitemap.json"
+ 
+
 }
