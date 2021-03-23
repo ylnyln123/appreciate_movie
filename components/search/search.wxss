@@ -1,0 +1,32 @@
+@import "iconfont.wxss";
+
+.container{
+  display: flex;
+  align-items: center;
+  margin-left: 30rpx;
+  position: relative;
+}
+.bar{
+  flex: 1;
+  height: 68rpx;
+  font-size: 30rpx;
+  border-radius: 50px;
+  background-color: #f5f5f5;
+  padding-left: 60rpx;
+}
+.search{
+  width: 40%;
+  background: #d43c33;
+  color: #fff;
+  margin-left: 20rpx;
+  font-size:30rpx;
+}
+ .in-bar{
+  color: #999;
+}
+.find{
+  position: absolute;
+  top: 50%;
+  transform: translate(16rpx,-50%);
+  color: #9f9f9f;
+}
