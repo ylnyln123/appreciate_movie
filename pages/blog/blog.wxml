@@ -1,0 +1,26 @@
+<view class="container">
+<!-- header-->
+<view class="header">
+  <view class="publish-container" bind:tap="onPublish">
+  <i class="iconfont icon-public"></i>
+  </view>
+  <view class="search-container">
+    <x-search iconfont="iconfont" icon-tubiao-="icon-tubiao-"
+    bind:search="onSearch"/>
+  </view>
+</view>
+<!-- 博客卡片列表 -->
+<view class="blog-list">
+  <block wx:for="{{blogList}}" wx:key="_id  ">
+      <view class="blog-panel">
+        <x-blog-card  blog="{{item}}" />
+      </view> 
+  </block>
+</view>
+
+<!-- 底部弹出层 -->
+<x-login modalShow="{{modalShow}}" bind:loginfail="onLoginFail" 
+bind:loginsuccess="onLoginSuccess">
+
+</x-login>
+</view>
