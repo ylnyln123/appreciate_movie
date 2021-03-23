@@ -1,6 +1,6 @@
 /**index.wxss**/
 
-.find {
+/* .find {
   width: 100%;
 }
 
@@ -65,4 +65,13 @@
 .store p{
   font-size: 30rpx;
   color:gray;
+} */
+.home-swiper {
+  width: 95%;
+  height: 360rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
 }

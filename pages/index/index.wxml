@@ -2,7 +2,7 @@
 <view>
   <import src="../../templates/foot.wxml" />
   <template is="myFoot" />
-  <view class='banner'>
+  <!-- <view class='banner'>
     <movable-area>
       <movable-view direction="horizontal">
           <view  class='store' wx:for='{{books}}' wx:key='src' bindtap="bindViewTap">
@@ -11,5 +11,13 @@
           </view>
       </movable-view>
     </movable-area>
-  </view>
+  </view> -->
+   <!--轮播图-->
+  <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for-items="{{books}}">
+      <swiper-item>
+        <image src="{{item.src}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
 </view>
