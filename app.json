@@ -10,7 +10,8 @@
     "pages/coming/coming",
     "pages/story/story",
     "pages/setting/setting",
-    "pages/person/person"
+    "pages/person/person",
+    "pages/moviePlay/moviePlay"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
