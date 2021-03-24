@@ -27,7 +27,7 @@
   <!-- 列表 -->
   <view class="movie-title">电影鉴赏</view>
   <view class="movie-list">
-    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item">
+    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item" bind:tap="navigateToDetail">
       <image src="{{item.src}}"></image>
       <view class="movie-item-name">{{item.name}}</view>
     </view>

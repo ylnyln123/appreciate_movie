@@ -31,7 +31,7 @@
 .nav-item-text{
   display: flex;
   flex-direction: column;
-  font-size: 38rpx;
+  font-size: 34rpx;
   font-weight: 600;
   color: firebrick;
 }

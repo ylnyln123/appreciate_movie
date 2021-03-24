@@ -94,5 +94,10 @@ Page({
   },
   onClickSwiper(e){
     console.log(e);
+  },
+  navigateToDetail(){
+    wx.navigateTo({
+      url: '/pages/moviePlay/moviePlay'
+    })
   }
 })
