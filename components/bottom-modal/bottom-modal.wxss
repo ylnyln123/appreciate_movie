@@ -17,7 +17,7 @@
   background-color: #f8f8f8;
 }
 
-.modal .icon-shanchu{
+.modal .icon-shanchu-{
   position: absolute;
   right: 10rpx;
   top:10rpx;

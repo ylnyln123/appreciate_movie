@@ -5,6 +5,7 @@
     "pages/post/post",
     "pages/my/my",
     "pages/blog/blog",
+    "pages/blog-edit/blog-edit",
     "pages/detail/detail",
     "pages/community/community",
     "pages/coming/coming",
