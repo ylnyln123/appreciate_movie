@@ -1,52 +1,14 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+const app = getApp();
+const db = app.db();
 Page({
   data: {
     autoplay: true,
     interval: 4000,
     duration: 1000,
-    movieList: [
-      {
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.jpg",
-        name:'复仇者联盟4'
-      },
-      {
-        src: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg",
-        name:'恶人传'
-      },
-      {
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2558022335.jpg",
-        name:'天气的子'
-      },{
-        src:"https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.jpg",
-        name:"乔乔的异想世界"
-      }, {
-        src: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg",
-        name:'恶人传'
-      },
-      {
-        src:"https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.jpg",
-        name:"乔乔的异想世界"
-      }
-    ],
-    books: [{
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.jpg",
-        dis:'中美电影文化'
-      },
-      {
-        src: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg",
-        dis:'中韩电影文化'
-      },
-      {
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2558022335.jpg",
-        dis:'中日电影文化'
-      },{
-        src:"https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.jpg",
-        dis:"中欧电影文化"
-      }
-    ],
+    movieList: [],
+    books: [],
   },
 
 
@@ -57,6 +19,7 @@ Page({
     })
   },
   onLoad: function() {
+    this.getMovieList()
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -84,6 +47,25 @@ Page({
       })
     }
   },
+  onReady(){
+
+  },
+  getMovieList(){
+    db.collection('movieList').get().then(res => {
+      // res.data 包含该记录的数据
+      const books = [];
+      for (let index = 0; index < res.data.length; index++) {
+        const element = res.data[index];
+        if (books.length < 4) {
+          books.push(element)
+        }
+      }
+      this.setData({
+        movieList: res.data,
+        books
+      })
+    })
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -92,12 +74,16 @@ Page({
       hasUserInfo: true
     })
   },
-  onClickSwiper(e){
-    console.log(e);
+  onInfoDetail(e){
+    const id = e.currentTarget.dataset.id
+    this.navigateToDetail(id);
   },
-  navigateToDetail(){
+  navigateToDetail(id){
+    if (!id) {
+      return
+    }
     wx.navigateTo({
-      url: '/pages/moviePlay/moviePlay'
+      url: `/pages/moviePlay/moviePlay?id=${id}`
     })
   }
 })
