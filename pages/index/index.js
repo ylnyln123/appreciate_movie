@@ -19,6 +19,9 @@ Page({
     })
   },
   onLoad: function() {
+    if (wx.l) {
+      
+    }
     this.getMovieList()
     if (app.globalData.userInfo) {
       this.setData({
@@ -51,7 +54,14 @@ Page({
 
   },
   getMovieList(){
-    db.collection('movieList').get().then(res => {
+    db.collection('movieData').field({
+      name: true,
+      src: true,
+      id: true,
+      plot:true
+    }).where({
+      id: this.curMovieID
+    }).get().then(res => {
       // res.data 包含该记录的数据
       const books = [];
       for (let index = 0; index < res.data.length; index++) {

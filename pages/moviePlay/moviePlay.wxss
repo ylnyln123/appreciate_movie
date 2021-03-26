@@ -47,13 +47,13 @@
   flex-direction: column;
 }
 .movie-content-detail{
-  padding: 24rpx 32rpx;
+  padding: 24rpx 0;
 }
 .movie-content-detail-synopsis{
   font-size: 32rpx;
 }
 .movie-content-detail-discuss{
-  padding: 24rpx;
+  padding: 24rpx 48rpx;
 }
 .movie-content-detail-discuss-item{
   display: flex;
@@ -81,6 +81,31 @@
   color: #bfbfbf;
   font-size: 26rpx;
   text-align: right;
+}
+.comment{
+  position: relative;
+}
+.comment-block{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #e6e6e6;
+}
+.comment-block-content{
+  display: flex;
+}
+.comment-block input{
+  width: 65%;
+  height: 96rpx;
+  margin-left: 24rpx;
+}
+.comment-block-content button{
+  width: 198rpx;
+  height: 88rpx;
+  color: #ffffff;
+  border-radius: 8rpx;
+  background-color: #0089FF;
 }
 /* .discuss-title{
   display: flex;

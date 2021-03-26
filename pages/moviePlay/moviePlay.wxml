@@ -17,7 +17,7 @@
     <view class="movie-content-detail">
       <!-- 简介 -->
       <view wx:if="{{navIndex == 0}}" class="movie-content-detail-synopsis">
-          {{movieData.synopsis}}
+        {{movieData.synopsis}}
       </view>
       <view wx:elif="{{navIndex == 1}}">
         <view class="movie-content-detail-discuss" wx:for="{{userDiscussList}}">
@@ -31,6 +31,17 @@
             <view class="discuss-content">{{item.detailsText}}</view>
             <!-- 评论时间 -->
             <view class="discuss-date">{{item.discussDate}}</view>
+          </view>
+        </view>
+        <!-- 输入框 -->
+        <view class="comment">
+          <view class="comment-block">
+            <form bind:submit="sendComment">
+              <view class="comment-block-content">
+                <input class="" type="text" placeholder="请留下您的宝贵评论" placeholder-style="margin-left:24rpx;" name='commentValue'></input>
+                <button form-type="submit">发布</button>
+              </view>
+            </form>
           </view>
         </view>
       </view>

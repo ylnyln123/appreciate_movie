@@ -1,5 +1,6 @@
 //logs.js
-const util = require('../../utils/util.js')
+// const util = require('../../utils/util.js')
+import Util from '../../utils/util'
 const app = getApp()
 const db = app.db();
 Page({
@@ -23,18 +24,40 @@ Page({
   },
   onLoad(options) {
     this.curMovieID = Number(options.id);
-    this.getMovieDetail();
+    // this.getMovieDetail();
     
   },
   getMovieDetail(){
-    db.collection('moviePlay').where({
+    db.collection('movieData').field({
+      name: true,
+      synopsis: true,
+      playUrl: true,
+      id: true,
+      comment: true
+    }).where({
       id: this.curMovieID
     }).get().then(res => {
+      console.log(res);
       const data = res.data[0];
       this.setData({
         movieData: data
       })
     })
+  },
+  sendComment(e){
+    console.log(e);
+    const submitValue = e.detail.value.commentValue
+    if (submitValue) {
+     const curDate = Util.formatTime(new Date());
+     
+     console.log(curDate);
+    }else{
+      wx.showToast({
+        title: '不能提交空的评论哦',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
   switchNav(e) {
     const clickIndex = e.currentTarget.dataset.index
