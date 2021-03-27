@@ -19,7 +19,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#D43C33",
     "navigationBarTitleText": "中外电影文化",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "useExtendedLib": {
     "weui": true

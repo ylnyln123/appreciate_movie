@@ -1,5 +1,4 @@
 //index.js
-//获取应用实例
 import Util from '../../utils/util'
 const app = getApp();
 const db = app.db();
@@ -10,7 +9,12 @@ Page({
     duration: 1000,
     movieList: [],
     books: [],
-    isLogin: true
+    search:null,
+    searchResultList: [],
+    isLogin: true,
+    searchValue: '',
+    isFocus: false,
+    isShowSeachClose: false
   },
 
 
@@ -21,9 +25,15 @@ Page({
     })
   },
   onLoad: function() {
-    this.getMovieList()
+    wx.showLoading({
+      title: '加载中',
+    })
+    this.getMovieList()//暂时注释
   },
   onReady(){
+    this.setData({
+      search: this.searchFun.bind(this)
+    })
     console.log('登录',app.isLogin());
   //  const userInfo = Util.getStorage('userInfo');
    if (!app.globalData.userInfo) {
@@ -31,6 +41,20 @@ Page({
       isLogin: false
     })
    }
+  },
+  searchFun(e){
+      const movieData = this.data.movieList
+      const resultList = []
+      for (let index = 0; index < movieData.length; index++) {
+        const element = movieData[index];
+        if (e && element.name && element.name.search(e) > -1) {
+          resultList.push({
+            text: element.name,
+            value: element._id
+          });
+        }
+      }
+      return resultList
   },
   getMovieList(){
     db.collection('movieData').field({
@@ -53,6 +77,7 @@ Page({
         movieList: res.data,
         books
       })
+      wx.hideLoading()
     })
   },
   getUserInfo(e){
@@ -67,6 +92,7 @@ Page({
 
   },
   onInfoDetail(e){
+    console.log(e);
     const id = e.currentTarget.dataset.id
     this.navigateToDetail(id);
   },
@@ -75,7 +101,32 @@ Page({
       return
     }
     wx.navigateTo({
-      url: `/pages/moviePlay/moviePlay?id=${id}`
+      url: `/pages/moviePlay/moviePlay?_id=${id}`
     })
+  },
+  searchInput(event){
+    console.log(event);
+    this.setData({
+      searchResultList: this.searchFun(event.detail.value),
+      isShowSeachClose: true
+    })
+  },
+  closeSearch(){
+    this.setData({
+      searchValue: '',
+      searchResultList: [],
+      isFocus: false,
+      isShowSeachClose: false
+    })
+  },
+  focusInput(){
+    this.setData({
+      isFocus: true
+    })
+  },
+  searchNavigateTo(e){
+    this.closeSearch();
+    console.log(e);
+    this.navigateToDetail(e.currentTarget.dataset.id)
   }
 })

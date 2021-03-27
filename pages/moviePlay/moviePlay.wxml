@@ -38,7 +38,7 @@
           <view class="comment-block">
             <form bind:submit="sendComment" style="width: 100%">
               <view class="comment-block-content">
-                <input class="" type="text" placeholder="请留下您的宝贵评论" placeholder-style="" name='commentValue'></input>
+                <input class="" type="text" placeholder="请留下您的宝贵评论" placeholder-style="" name='commentValue' value="{{inputValue}}"></input>
                 <button form-type="submit">发布</button>
               </view>
             </form>

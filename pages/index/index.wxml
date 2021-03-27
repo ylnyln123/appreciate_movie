@@ -1,24 +1,24 @@
 <!--index.wxml-->
 <view>
- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
-   <!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
-  <!-- <view class='banner'>
-    <movable-area>
-      <movable-view direction="horizontal">
-          <view  class='store' wx:for='{{books}}' wx:key='src' bindtap="bindViewTap">
-            <image src='{{item.src}}' mode='aspextFill'></image>
-             <p>{{item.dis}}</p>
-          </view>
-      </movable-view>
-    </movable-area>
-  </view> -->
+  <view class="search">
+  <view class="search-bar">
+    <image src="../../images/icons/search-icon.svg"></image>
+ <!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}" cancel="{{true}}" bindselectresult="selectResult"></mp-searchbar> -->
+  <input class="" value="{{searchValue}}" type="text" placeholder="请输入您要搜索的内容" placeholder-style="margin-left: 16rpx;" bindinput="searchInput" bindfocus="focusInput" bindblur="closeSearch" bindconfirm="">
+  </input>
+  <view bind:tap="closeSearch" style="color: #0089FF; padding: 0 20rpx" wx:if="{{isShowSeachClose}}">取消</view>
+  </view>
+  <view class="search-result" >
+    <view wx:for="{{searchResultList}}" class="search-result-item" data-id="{{item.value}}" catch:tap="searchNavigateTo">{{item.text}}</view>
+  </view>
+    </view>
   <view class="main-content">
    <!--轮播图-->
    <view class="swiper-list">
      <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}" wx:if="{{books.length}}">
     <block wx:for="{{books}}" wx:key="index">
       <swiper-item>
-        <image src="{{item.plot}}" class="slide-image"  data-id="{{item.id}}" bind:tap="onInfoDetail" mode="aspectFill" />
+        <image src="{{item.plot}}" class="slide-image"  data-id="{{item._id}}" bind:tap="onInfoDetail" mode="aspectFill" />
       </swiper-item>
     </block>
   </swiper>
@@ -27,7 +27,7 @@
   <!-- 列表 -->
   <view class="movie-title">电影鉴赏</view>
   <view class="movie-list">
-    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item" data-id="{{item.id}}" bind:tap="onInfoDetail">
+    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item" data-id="{{item._id}}" bind:tap="onInfoDetail">
       <image src="{{item.src}}"></image>
       <view class="movie-item-name">{{item.name}}</view>
     </view>
