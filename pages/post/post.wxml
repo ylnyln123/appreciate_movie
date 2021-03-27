@@ -1,11 +1,8 @@
-<view>
-  <import src="../../templates/foot.wxml" />
-  <template is="myFoot" />
-
-  <view class='per-list bg-white'  wx:for="{{bookbox}}"> 
-    <navigator class='list' url="../community/community">
-      <text class='jiantou'>{{item.name}}</text>
-    </navigator>
-    <view class='bar'></view>
+<view class="block-list">
+  <view class='block-item' wx:for="{{cultureData}}" style="background-color: {{item.color}}" data-index="{{index}}" bind:tap="onClickCulture"> 
+    <image src="{{item.src}}" class="title"></image>
+      <text class='block-item-text'>{{item.name}}</text>
+    <image src="../../images/icons/right-arrows.svg" class="arrows"></image>
 </view>
+<mp-loading type="circle" show="{{isLoading}}"></mp-loading>
 </view>

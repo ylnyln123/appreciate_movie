@@ -50,6 +50,9 @@ App({
   },
   db: wx.cloud.database,
   globalData: {
-    userInfo: null
+    userInfo: wx.getStorageSync('userInfo'),
+  },
+  isLogin: () => {
+   return !!wx.getStorageSync('userInfo')
   }
 })

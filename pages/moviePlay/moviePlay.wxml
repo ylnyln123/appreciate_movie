@@ -20,25 +20,25 @@
         {{movieData.synopsis}}
       </view>
       <view wx:elif="{{navIndex == 1}}">
-        <view class="movie-content-detail-discuss" wx:for="{{userDiscussList}}">
+        <view class="movie-content-detail-discuss" wx:for="{{movieData.comment}}">
           <view class="movie-content-detail-discuss-item">
             <!-- 用户名 -->
             <view class="movie-content-detail-discuss-item-title">
-              <image src="../../images/icons/user-discuss-title.svg"></image>
-              <view class="discuss-name">{{item.userName}}:</view>
+              <image src="{{item.avatarUrl || '../../images/icons/user-discuss-title.svg'}}"></image>
+              <view class="discuss-name">{{item.submitName}}:</view>
             </view>
             <!-- 评论内容 -->
-            <view class="discuss-content">{{item.detailsText}}</view>
+            <view class="discuss-content">{{item.content}}</view>
             <!-- 评论时间 -->
-            <view class="discuss-date">{{item.discussDate}}</view>
+            <view class="discuss-date">{{item.submitDate}}</view>
           </view>
         </view>
         <!-- 输入框 -->
         <view class="comment">
           <view class="comment-block">
-            <form bind:submit="sendComment">
+            <form bind:submit="sendComment" style="width: 100%">
               <view class="comment-block-content">
-                <input class="" type="text" placeholder="请留下您的宝贵评论" placeholder-style="margin-left:24rpx;" name='commentValue'></input>
+                <input class="" type="text" placeholder="请留下您的宝贵评论" placeholder-style="" name='commentValue'></input>
                 <button form-type="submit">发布</button>
               </view>
             </form>

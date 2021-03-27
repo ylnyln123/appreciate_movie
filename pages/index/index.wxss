@@ -114,3 +114,44 @@
   font-size: 28rpx;
   color: gray;
 }
+.mask{
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(36, 31, 31);
+  opacity: 0.6;
+}
+.dialog-login{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 320rpx;
+  left: 50%;
+  margin-left: -240rpx;
+  width: 480rpx;
+  height: 360rpx;
+  background-color: #fff;
+  border-radius: 32rpx;
+  border: 1rpx solor rgb(240, 233, 233);
+  overflow: hidden;
+}
+.dialog-login-title{
+  color: rgb(73, 65, 65);
+  font-size: 38rpx;
+  font-weight: 700;
+  padding: 32rpx;
+}
+.dialog-login-content{
+  color: #9c9898;
+  font-size: 30rpx;
+  text-align: center;
+  padding: 16rpx 32rpx;
+}
+.dialog-login button{
+  width: 100%;
+  height: 100%;
+  color: #0089FF;
+  background-color: rgb(250, 249, 249);
+}

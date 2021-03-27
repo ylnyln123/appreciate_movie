@@ -35,3 +35,14 @@
     
 </view>
 </view>
+
+<view wx:if="{{!isLogin}}">
+  <view class="mask"></view>
+<view class="dialog-login">
+  <view class="dialog-login-title">登录提示</view>
+  <view class="dialog-login-content">请您先进行登录，再愉快的使用本产品哦</view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+</view>
+</view>
+
+  

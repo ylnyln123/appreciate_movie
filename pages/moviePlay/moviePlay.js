@@ -12,7 +12,7 @@ Page({
       text: '评论',
       imageUrl: '../../images/icons/movie.svg'
     }],
-    movieData:{},
+    movieData: {},
     userDiscussList: [
       {
         userName: '刺猬的天',
@@ -24,10 +24,10 @@ Page({
   },
   onLoad(options) {
     this.curMovieID = Number(options.id);
-    // this.getMovieDetail();
-    
+    this.getMovieDetail();
+    this.userInfo = app.globalData.userInfo;//获取用户信息
   },
-  getMovieDetail(){
+  getMovieDetail() {
     db.collection('movieData').field({
       name: true,
       synopsis: true,
@@ -44,20 +44,57 @@ Page({
       })
     })
   },
-  sendComment(e){
+  sendComment(e) {
     console.log(e);
     const submitValue = e.detail.value.commentValue
     if (submitValue) {
-     const curDate = Util.formatTime(new Date());
-     
-     console.log(curDate);
-    }else{
-      wx.showToast({
-        title: '不能提交空的评论哦',
-        icon: 'none',
-        duration: 2000
+      const curDate = Util.formatTime(new Date());
+      const _id = this.data.movieData._id;
+      const userInfo = app.globalData.userInfo
+      //  _id
+      const _ = db.command
+      db.collection('movieData').doc(_id).update({
+        data: {
+          comment: _.unshift({
+              content: submitValue,
+              submitDate: curDate,
+              submitName: this.userInfo.nickName,
+              avatarUrl:  this.userInfo.avatarUrl
+          })
+        }
+      }).then(res => {
+        if (res.errMsg == 'document.update:ok') {
+          this.showToast('success','评论发表成功');
+          this.getcommandDetail();
+        }
+      
+      },err => {
+        this.showToast('error','提交失败');
       })
+      console.log(curDate);
+    } else {
+     this.showToast('none','不能为空哦');
     }
+  },
+  getcommandDetail(){
+    db.collection('movieData').field({
+      comment: true
+    }).where({
+      id: this.curMovieID
+    }).get().then(res => {
+      console.log(res);
+      const commentData = res.data[0].comment;
+      this.setData({
+        'movieData.comment': commentData
+      })
+    })
+  },
+  showToast(status,text){
+    wx.showToast({
+      title: text,
+      icon: status,
+      duration: 2000
+    })
   },
   switchNav(e) {
     const clickIndex = e.currentTarget.dataset.index
