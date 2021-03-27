@@ -21,6 +21,13 @@
         {
           "name": "播放",
           "pathName": "pages/moviePlay/moviePlay",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "pages/post/post",
+          "pathName": "pages/post/post",
+          "query": "id=1",
           "scene": null
         }
       ]

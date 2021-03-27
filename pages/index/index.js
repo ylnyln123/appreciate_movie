@@ -1,53 +1,16 @@
 //index.js
 //获取应用实例
-//获取1122
-const app = getApp()
-
+import Util from '../../utils/util'
+const app = getApp();
+const db = app.db();
 Page({
   data: {
     autoplay: true,
     interval: 4000,
     duration: 1000,
-    movieList: [
-      {
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.jpg",
-        name:'复仇者联盟4'
-      },
-      {
-        src: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg",
-        name:'恶人传'
-      },
-      {
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2558022335.jpg",
-        name:'天气的子'
-      },{
-        src:"https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.jpg",
-        name:"乔乔的异想世界"
-      }, {
-        src: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg",
-        name:'恶人传'
-      },
-      {
-        src:"https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.jpg",
-        name:"乔乔的异想世界"
-      }
-    ],
-    books: [{
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2552058346.jpg",
-        dis:'中美电影文化'
-      },
-      {
-        src: "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2555084871.jpg",
-        dis:'中韩电影文化'
-      },
-      {
-        src: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2558022335.jpg",
-        dis:'中日电影文化'
-      },{
-        src:"https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2567973073.jpg",
-        dis:"中欧电影文化"
-      }
-    ],
+    movieList: [],
+    books: [],
+    isLogin: true
   },
 
 
@@ -58,47 +21,61 @@ Page({
     })
   },
   onLoad: function() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    this.getMovieList()
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
+  onReady(){
+    console.log('登录',app.isLogin());
+  //  const userInfo = Util.getStorage('userInfo');
+   if (!app.globalData.userInfo) {
     this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+      isLogin: false
+    })
+   }
+  },
+  getMovieList(){
+    db.collection('movieData').field({
+      name: true,
+      src: true,
+      id: true,
+      plot:true
+    }).where({
+      id: this.curMovieID
+    }).get().then(res => {
+      // res.data 包含该记录的数据
+      const books = [];
+      for (let index = 0; index < res.data.length; index++) {
+        const element = res.data[index];
+        if (books.length < 4) {
+          books.push(element)
+        }
+      }
+      this.setData({
+        movieList: res.data,
+        books
+      })
     })
   },
-  onClickSwiper(e){
-    console.log(e);
+  getUserInfo(e){
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo;
+    Util.setStorage('userInfo',e.detail.userInfo);
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true,
+      isLogin: true
+    });
+
   },
-  navigateToDetail(){
+  onInfoDetail(e){
+    const id = e.currentTarget.dataset.id
+    this.navigateToDetail(id);
+  },
+  navigateToDetail(id){
+    if (!id) {
+      return
+    }
     wx.navigateTo({
-      url: '/pages/moviePlay/moviePlay'
+      url: `/pages/moviePlay/moviePlay?id=${id}`
     })
   }
 })

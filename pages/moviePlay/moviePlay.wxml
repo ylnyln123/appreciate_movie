@@ -1,8 +1,8 @@
 <view>
   <view class="video-play">
-    <video src="https://vd4.bdstatic.com/mda-kdse5ddjjt2gxx0j/v1-cae/sc/mda-kdse5ddjjt2gxx0j.mp4?v_from_s=sz_videoui_4135&auth_key=1616593046-0-0-483c2d50ca42a3b3bdbdcdafa7e4090a&bcevod_channel=searchbox_feed&pd=1&pt=3&abtest=" object-fit="fill" custom-cache="{{false}}" class="video-play-main"></video>
+    <video wx:if="{{movieData.playUrl}}" src="{{movieData.playUrl}}" object-fit="fill" custom-cache="{{false}}" class="video-play-main"></video>
   </view>
-  <view class="movie-name">复仇者联盟4</view>
+  <view class="movie-name">{{movieData.name}}</view>
   <view class="movie-content">
     <view class="nav">
       <view wx:for="{{navList}}" class="nav-item" data-index="{{index}}" bind:tap="switchNav">
@@ -17,20 +17,31 @@
     <view class="movie-content-detail">
       <!-- 简介 -->
       <view wx:if="{{navIndex == 0}}" class="movie-content-detail-synopsis">
-          《复仇者联盟4：终局之战》是美国漫威影业公司出品的科幻电影，由安东尼·罗素和乔·罗素联合执导，小罗伯特·唐尼、克里斯·埃文斯、克里斯·海姆斯沃斯、马克·鲁法洛、斯嘉丽·约翰逊、杰瑞米·雷纳、保罗·路德、布丽·拉尔森、唐·钱德尔、凯伦·吉兰、乔什·布洛林等主演。影片改编自美国漫威漫画，是漫威电影宇宙的第22部电影，讲述了在《复仇者联盟3：无限战争》的毁灭性事件过后，复仇者联盟在剩余盟友的帮助下再一次击败灭霸
+        {{movieData.synopsis}}
       </view>
       <view wx:elif="{{navIndex == 1}}">
-        <view class="movie-content-detail-discuss" wx:for="{{userDiscussList}}">
+        <view class="movie-content-detail-discuss" wx:for="{{movieData.comment}}">
           <view class="movie-content-detail-discuss-item">
             <!-- 用户名 -->
             <view class="movie-content-detail-discuss-item-title">
-              <image src="../../images/icons/user-discuss-title.svg"></image>
-              <view class="discuss-name">{{item.userName}}:</view>
+              <image src="{{item.avatarUrl || '../../images/icons/user-discuss-title.svg'}}"></image>
+              <view class="discuss-name">{{item.submitName}}:</view>
             </view>
             <!-- 评论内容 -->
-            <view class="discuss-content">{{item.detailsText}}</view>
+            <view class="discuss-content">{{item.content}}</view>
             <!-- 评论时间 -->
-            <view class="discuss-date">{{item.discussDate}}</view>
+            <view class="discuss-date">{{item.submitDate}}</view>
+          </view>
+        </view>
+        <!-- 输入框 -->
+        <view class="comment">
+          <view class="comment-block">
+            <form bind:submit="sendComment" style="width: 100%">
+              <view class="comment-block-content">
+                <input class="" type="text" placeholder="请留下您的宝贵评论" placeholder-style="" name='commentValue'></input>
+                <button form-type="submit">发布</button>
+              </view>
+            </form>
           </view>
         </view>
       </view>

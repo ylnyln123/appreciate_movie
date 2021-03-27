@@ -15,10 +15,10 @@
   <view class="main-content">
    <!--轮播图-->
    <view class="swiper-list">
-     <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
+     <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}" wx:if="{{books.length}}">
     <block wx:for="{{books}}" wx:key="index">
       <swiper-item>
-        <image src="{{item.src}}" class="slide-image"  data-index="{{index}}" bind:tap="onClickSwiper" mode="aspectFill" />
+        <image src="{{item.plot}}" class="slide-image"  data-id="{{item.id}}" bind:tap="onInfoDetail" mode="aspectFill" />
       </swiper-item>
     </block>
   </swiper>
@@ -27,7 +27,7 @@
   <!-- 列表 -->
   <view class="movie-title">电影鉴赏</view>
   <view class="movie-list">
-    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item" bind:tap="navigateToDetail">
+    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item" data-id="{{item.id}}" bind:tap="onInfoDetail">
       <image src="{{item.src}}"></image>
       <view class="movie-item-name">{{item.name}}</view>
     </view>
@@ -35,3 +35,14 @@
     
 </view>
 </view>
+
+<view wx:if="{{!isLogin}}">
+  <view class="mask"></view>
+<view class="dialog-login">
+  <view class="dialog-login-title">登录提示</view>
+  <view class="dialog-login-content">请您先进行登录，再愉快的使用本产品哦</view>
+  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+</view>
+</view>
+
+  

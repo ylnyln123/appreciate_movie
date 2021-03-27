@@ -3,6 +3,7 @@
 	"packOptions": {
 		"ignore": []
 	},
+  "cloudbaseRoot": "cloudbase/",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
