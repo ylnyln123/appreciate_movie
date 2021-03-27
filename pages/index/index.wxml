@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <view>
-  <import src="../../templates/foot.wxml" />
-  <template is="myFoot" />
-  <view class='banner'>
+ <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+   <!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
+  <!-- <view class='banner'>
     <movable-area>
       <movable-view direction="horizontal">
           <view  class='store' wx:for='{{books}}' wx:key='src' bindtap="bindViewTap">
@@ -11,5 +11,27 @@
           </view>
       </movable-view>
     </movable-area>
+  </view> -->
+  <view class="main-content">
+   <!--轮播图-->
+   <view class="swiper-list">
+     <swiper class="home-swiper" indicator-dots="true" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{true}}">
+    <block wx:for="{{books}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item.src}}" class="slide-image"  data-index="{{index}}" bind:tap="onClickSwiper" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+   </view>
+
+  <!-- 列表 -->
+  <view class="movie-title">电影鉴赏</view>
+  <view class="movie-list">
+    <view wx:for="{{movieList}}" wx:key="index" class="movie-list-item" bind:tap="navigateToDetail">
+      <image src="{{item.src}}"></image>
+      <view class="movie-item-name">{{item.name}}</view>
+    </view>
   </view>
+    
+</view>
 </view>

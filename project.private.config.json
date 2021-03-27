@@ -17,6 +17,11 @@
           "pathName": "pages/coming/coming",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "播放",
+          "pathName": "pages/moviePlay/moviePlay",
+          "scene": null
         }
       ]
     }
