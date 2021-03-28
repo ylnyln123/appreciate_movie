@@ -27,6 +27,7 @@
   }
   .blog-list{
     margin-top: 120rpx;
+    width: 100%;
   }
   .blog-panel{
     margin-bottom: 20rpx;

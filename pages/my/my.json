@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "个人中心",
-  "navigationBarBackgroundColor": "#f1f1f1"
+  "component": true,
+  "usingComponents": {},
+  "navigationBarTitleText": "我的",
+  "disableScroll":true
 }
