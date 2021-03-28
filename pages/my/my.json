@@ -3,4 +3,5 @@
   "usingComponents": {},
   "navigationBarTitleText": "我的",
   "disableScroll":true
+  "navigationBarTitleText": "个人中心"
 }

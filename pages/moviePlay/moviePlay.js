@@ -20,10 +20,11 @@ Page({
         detailsText: '这部电影真好看！周末和女神一起去！'
       }
     ],
-    navIndex: 0
+    navIndex: 0,
+    inputValue: ''
   },
   onLoad(options) {
-    this.curMovieID = Number(options.id);
+    this.curMovieID =options._id;
     this.getMovieDetail();
     this.userInfo = app.globalData.userInfo;//获取用户信息
   },
@@ -35,7 +36,7 @@ Page({
       id: true,
       comment: true
     }).where({
-      id: this.curMovieID
+      _id: this.curMovieID
     }).get().then(res => {
       console.log(res);
       const data = res.data[0];
@@ -66,6 +67,9 @@ Page({
         if (res.errMsg == 'document.update:ok') {
           this.showToast('success','评论发表成功');
           this.getcommandDetail();
+          this.setData({
+            inputValue:''
+          })
         }
       
       },err => {
@@ -80,10 +84,10 @@ Page({
     db.collection('movieData').field({
       comment: true
     }).where({
-      id: this.curMovieID
+      _id: this.curMovieID
     }).get().then(res => {
-      console.log(res);
-      const commentData = res.data[0].comment;
+      console.log('返回数据',res);
+       const commentData = res.data[0].comment;
       this.setData({
         'movieData.comment': commentData
       })
