@@ -5,7 +5,7 @@
   <view class="movie-name">{{movieData.name}}</view>
   <view class="movie-content">
     <view class="nav">
-      <view wx:for="{{navList}}" class="nav-item" data-index="{{index}}" bind:tap="switchNav">
+      <view wx:for="{{navList}}" class="nav-item" data-index="{{index}}" bind:tap="switchNav" wx:key="index">
         <image src="{{item.imageUrl}}"></image>
         <view class="nav-item-text">
           <text>{{item.text}}</text>
@@ -20,7 +20,7 @@
         {{movieData.synopsis}}
       </view>
       <view wx:elif="{{navIndex == 1}}">
-        <view class="movie-content-detail-discuss" wx:for="{{movieData.comment}}">
+        <view class="movie-content-detail-discuss" wx:for="{{movieData.comment}}" wx:key="{{movieData._id}}">
           <view class="movie-content-detail-discuss-item">
             <!-- 用户名 -->
             <view class="movie-content-detail-discuss-item-title">

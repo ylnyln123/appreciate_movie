@@ -9,7 +9,7 @@
   <view bind:tap="closeSearch" style="color: #0089FF; padding: 0 20rpx" wx:if="{{isShowSeachClose}}">取消</view>
   </view>
   <view class="search-result" >
-    <view wx:for="{{searchResultList}}" class="search-result-item" data-id="{{item.value}}" catch:tap="searchNavigateTo">{{item.text}}</view>
+    <view wx:for="{{searchResultList}}" class="search-result-item" data-id="{{item.value}}" catch:tap="searchNavigateTo" wx:key="{{index}}">{{item.text}}</view>
   </view>
     </view>
   <view class="main-content">

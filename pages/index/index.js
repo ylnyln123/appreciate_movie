@@ -89,6 +89,11 @@ Page({
       hasUserInfo: true,
       isLogin: true
     });
+    wx.showToast({
+      title: '登陆成功',
+      icon: 'success',
+      duration: 2000
+    })
 
   },
   onInfoDetail(e){
