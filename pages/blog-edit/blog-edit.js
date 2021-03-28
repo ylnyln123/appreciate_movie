@@ -3,7 +3,7 @@ const MAX_WORDS_NUM=140
 const MAX_IMG_NUM=9
 //输入文字/图片最大的个数
 
-// const db = wx.cloud.database()
+const db = wx.cloud.database()
 // 输入的文字内容
 let content = ''
 let userInfo = {}
@@ -147,17 +147,17 @@ Page({
         })
 
     //     // 返回blog页面，并且刷新
-    //     // wx.navigateBack()
-    //     const pages = getCurrentPages()
-    //     // console.log(pages)
-    //     // 取到上一个页面
-    //     // const prevPage = pages[pages.length - 2]
-    //     // prevPage.onPullDownRefresh()
-    //   })
-    // }).catch((err) => {
-    //   wx.hideLoading()
-    //   wx.showToast({
-    //     title: '发布失败',
+        wx.navigateBack()
+        const pages = getCurrentPages()
+        // console.log(pages)
+        // 取到上一个页面
+        const prevPage = pages[pages.length - 2]
+        prevPage.onPullDownRefresh()
+      })
+    }).catch((err) => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '发布失败',
       })
     })
   },

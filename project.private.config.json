@@ -29,6 +29,17 @@
           "pathName": "pages/post/post",
           "query": "id=1",
           "scene": null
+        },
+        {
+          "name": "pages/blog/blog",
+          "pathName": "pages/blog/blog",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "scene": null
         }
       ]
     }

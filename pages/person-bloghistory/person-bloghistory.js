@@ -1,31 +1,36 @@
-// pages/person/person.js
+// pages/person-bloghistory/person-bloghistory.js
+const MAX_LIMIT=10
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    blogList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this._getListByCloudFn()
   },
-  onTapQrCode() {
+
+  _getListByCloudFn(){
     wx.showLoading({
-      title: '生成中',
+      title: '加载中',
     })
     wx.cloud.callFunction({
-      name: 'getQrCode'
-    }).then((res) => {
-      console.log(res)
-      const fileId = res.result
-      wx.previewImage({
-        urls: [fileId],
-        current: fileId
+      name:'blog',
+      data:{
+        $url:'getListByOpenid',
+        start:this.data.blogList.length,
+        count:MAX_LIMIT
+      }
+    }).then((res)=>{
+      console.log(res) 
+      this.setData({
+        blogList: this.data.blogList.concat(res.result)
       })
       wx.hideLoading()
     })
@@ -62,7 +67,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this._getListByCloudFn()
   },
 
   /**
