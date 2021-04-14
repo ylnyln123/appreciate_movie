@@ -42,3 +42,25 @@
   font-size: 34rpx;
   color: rgb(83, 81, 81)
 }
+.screen-btn{
+  position: fixed;
+  bottom: 72rpx;
+  right: 54rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 108rpx;
+  height: 108rpx;
+  background-color: #009FCC;
+  border-radius: 50%;
+  z-index: 2;
+}
+.screen-btn image{
+  width: 48rpx;
+  height: 48rpx;
+}
+.culture-main-content-detail-title{
+  font-size: 36rpx;
+  font-weight: 700;
+  margin-bottom: 16rpx;
+}

@@ -1,4 +1,8 @@
 
   {
+    "usingComponents": {
+      "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet"
+    },
     "navigationBarTitleText": "评论"
+
   }

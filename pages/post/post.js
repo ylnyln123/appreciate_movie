@@ -43,10 +43,10 @@ Page({
 
   },
   getCulture(){
-    db.collection('culture').where({
+    db.collection('cultures').where({
       id: this.curMovieID
     }).get().then(res => {
-      console.log(res);
+      console.log('#####',res);
       console.log(res);
       this.setData({
         cultureData: res.data,

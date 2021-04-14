@@ -8,8 +8,13 @@
       <image src="../../images/icons/culture-book-icon.svg" class="culture-main-title-img"></image>
       <text>{{cultureData.name}}</text>
     </view>
-    <view class="culture-main-content-detail">
-      <text class="" user-select="{{true}}" decode="{{true}}" space="nbsp">{{cultureData.content}}</text>
+    <view class="culture-main-content-detail" wx:for="{{cultureData.content}}">
+      <view wx:if="{{item.title}}" class="culture-main-content-detail-title">{{item.title}}</view>
+      <text class="" user-select="{{true}}" decode="{{true}}" space="nbsp">{{item.detail}}</text>
     </view>
   </view>
+  <view class="screen-btn" bind:tap="showAction" wx:if="{{isShowAction}}">
+      <image src="../../images/icons/screen.svg"></image>
+  </view>
+<mp-actionSheet bindactiontap="btnClick" show="{{showActionsheet}}" actions="{{groups}}"></mp-actionSheet>
 </view>
